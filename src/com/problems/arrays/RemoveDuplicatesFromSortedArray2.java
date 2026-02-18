@@ -1,14 +1,21 @@
 package com.problems.arrays;
 
-// Problem - 26
-public class RemoveDuplicatesFromSortedArray {
+// Problem - 80
+public class RemoveDuplicatesFromSortedArray2 {
     public int removeDuplicates(int[] nums) {
-        int z = 0;
-        for(int i = 0; i < nums.length; i++) {
-            if(nums[i] != nums[z]) {
-                nums[++z] = nums[i];
+        int n = nums.length, z = 1, count = 1;
+        for (int i = 1; i < n; i++) {
+            if (nums[i] == nums[i - 1]) {
+                if (count < 2) {
+                    nums[z++] = nums[i];
+                }
+                count++;
+            } else {
+                count = 1;
+                nums[z++] = nums[i];
             }
+
         }
-        return z+1;
+        return z;
     }
 }
